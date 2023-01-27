@@ -6,20 +6,33 @@ import "react-toastify/dist/ReactToastify.css";
 import { Dropdown } from "semantic-ui-react";
 import { countryOptions } from "./SelectedData";
 import { DropDownList } from "@progress/kendo-react-dropdowns";
-const countryList=['USA','INDIA','UK','Russia']
+import ImgOverlayExample from "./Card";
+
+const countryList = ["USA", "INDIA", "UK", "Russia"];
+
 const NormalForm = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [textarea, setTextArea] = useState("");
+  const [country, setCountry] = useState("");
+  const [load, setLoad] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (firstName === "" || lastName === "" || textarea === "") {
-      return toast.info("Please Fill everyThing...", { autoClose: 1500 });
+    if (
+      firstName === "" ||
+      lastName === "" ||
+      textarea === "" ||
+      country === ""
+    ) {
+      return (
+        toast.info("Please Fill EveryThing...", { autoClose: 1500 })
+      );
     }
-    setFirstName("");
-    setLastName("");
-    setTextArea("");
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000);
+    setLoad(true);
     toast.success("Success...", { autoClose: 1500 });
   };
 
@@ -39,6 +52,12 @@ const NormalForm = () => {
                 value={firstName}
                 name="firstName"
                 placeholder="Your name.."
+                onCopy={(e) => {
+                  toast.info(e.target.value, "Copied");
+                }}
+                onPaste={() => {
+                  toast.info("Pasted");
+                }}
                 onChange={(e) => {
                   setFirstName(e.target.value);
                 }}
@@ -58,6 +77,12 @@ const NormalForm = () => {
                 value={lastName}
                 name="lastName"
                 placeholder="Your last name.."
+                onCopy={(e) => {
+                  toast.info(e.target.value, "Copied");
+                }}
+                onPaste={() => {
+                  toast.info("Pasted");
+                }}
                 onChange={(e) => {
                   setLastName(e.target.value);
                 }}
@@ -80,7 +105,9 @@ const NormalForm = () => {
               <form className="k-form k-mb-4">
                 <DropDownList
                   data={countryList}
-                  onChange={(e) => console.log(e.value)}
+                  onChange={(e) => {
+                    setCountry(e.value);
+                  }}
                 />
               </form>
             </div>
@@ -96,6 +123,12 @@ const NormalForm = () => {
                 value={textarea}
                 name="textarea"
                 placeholder="Write something.."
+                onCopy={(e) => {
+                  toast.info(e.target.value, "Copied");
+                }}
+                onPaste={() => {
+                  toast.info("Pasted");
+                }}
                 onChange={(e) => {
                   setTextArea(e.target.value);
                 }}
@@ -110,6 +143,14 @@ const NormalForm = () => {
           </div>
         </form>
       </div>
+      {load && (
+        <ImgOverlayExample
+          FirstName={firstName}
+          LastName={lastName}
+          countryName={country}
+          textMessage={textarea}
+        />
+      )}
     </>
   );
 };
