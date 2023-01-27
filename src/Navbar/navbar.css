@@ -1,0 +1,55 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+
+.navigation {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  list-style: none;
+  margin: 0;
+  background-color: gray;
+}
+
+.navigation a {
+  display: block;
+  text-decoration: none;
+  /* line-height: 75px; */
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.navigation a:hover {
+  background-color: green;
+  color: black;
+  transition-duration: 0.4s;
+  border-radius: 10px;
+}
+
+/*  Setting responsive element */
+
+@media all and (max-width: 800px) {
+  .navigation {
+    justify-content: space-around;
+  }
+}
+
+@media all and (max-width: 600px) {
+  .navigation {
+    flex-flow: column wrap;
+    padding: 0;
+  }
+  .navigation a {
+    text-align: center;
+    padding: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .navigation li:last-of-type a {
+    border-bottom: none;
+  }
+}
