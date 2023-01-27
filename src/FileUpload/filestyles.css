@@ -1,0 +1,21 @@
+.fileCenter {
+  display: block;
+  box-sizing: border-box;
+  padding-left: 300px;
+  border: 2px solid green;
+  margin-top: 30px;
+  border-radius: 10px;
+}
+
+@media all and (max-width: 800px) {
+  .fileCenter {
+    justify-content: space-around;
+  }
+}
+
+@media all and(max-width:600px) {
+  .fileCenter {
+    flex-flow: column wrap;
+    padding: 0;
+  }
+}
