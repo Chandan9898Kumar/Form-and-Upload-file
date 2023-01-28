@@ -1,7 +1,8 @@
 import React from "react";
 import axios from "axios";
 import "./filestyles.css";
-
+import Button from "react-bootstrap/Button";
+import Spinner from "react-bootstrap/Spinner";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 class UploadFile extends React.Component {
@@ -64,26 +65,56 @@ class UploadFile extends React.Component {
     }
   };
 
+  ButtonExample = () => {
+    return (
+      <div className="center">
+        <Button variant="primary" disabled>
+          <Spinner
+            as="span"
+            animation="border"
+            size="sm"
+            role="status"
+            aria-hidden="true"
+          />
+          <span className="visually-hidden">Loading...</span>
+        </Button>{" "}
+        <Button variant="primary" disabled>
+          <Spinner
+            as="span"
+            animation="grow"
+            size="sm"
+            role="status"
+            aria-hidden="true"
+          />
+          Loading...
+        </Button>
+      </div>
+    );
+  };
+
   render() {
     return (
       <div className="fileCenter">
-        <h2>File Uploading App</h2>
-        <br />
-        {"     "}
-        <div>
-          <input type="file" onChange={this.onFileChange} />
-          <button onClick={this.onFileUpload}>Upload File</button>{" "}
-          <button
-            onClick={() => {
-              window.location.reload();
-            }}
-          >
-            Refresh Page
-          </button>
-          <ToastContainer />
-        </div>
+        <div style={{ marginRight: "30px" }}>
+          <h2>File Uploading App</h2>
+          <br />
+          {"     "}
+          <div>
+            <input type="file" onChange={this.onFileChange} />
+            <button onClick={this.onFileUpload}>Upload File</button>{" "}
+            <button
+              onClick={() => {
+                window.location.reload();
+              }}
+            >
+              Refresh Page
+            </button>
+            <ToastContainer />
+          </div>
 
-        {this.fileData()}
+          {this.fileData()}
+        </div>
+        <div>{!this.state.selectedFile && this.ButtonExample()}</div>
       </div>
     );
   }
