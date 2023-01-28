@@ -18,8 +18,10 @@ jobs:
         uses: actions/setup-node@v2-beta
         with:
           node-version: 14
-
       - name: Install package dependencies
+        run: npm install
+
+      - name: Run test cases
         run: npm run test
 
       - name: Check code linting
