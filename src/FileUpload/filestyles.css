@@ -1,10 +1,36 @@
-.fileCenter {
-  display: block;
+* {
   box-sizing: border-box;
-  padding-left: 300px;
+}
+.fileCenter {
+  padding-left: 200px;
   border: 2px solid green;
   margin-top: 30px;
+  margin-right: 100px;
   border-radius: 10px;
+  margin-left: 60px;
+  height: 500px;
+  background-color: coral;
+  box-shadow: 10px 10px;
+  margin-bottom: 30px;
+
+  /* You can also use flexbox to center things. below */
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+.fileCenter div {
+  margin-top: 15px;
+
+  /* To center both vertically and horizontally, use padding and text-align: center: */
+  /* padding: 10px 0;
+  text-align: center; */
+}
+
+.center {
+  display: block;
+  margin-top: 80px;
+  margin-left: 150px;
+  margin-right: auto;
 }
 
 @media all and (max-width: 800px) {
