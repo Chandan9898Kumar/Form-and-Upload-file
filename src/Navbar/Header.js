@@ -1,6 +1,7 @@
 import React from "react";
 import "./navbar.css";
 import { NavLink } from "react-router-dom";
+import SearchBar from "../SearchBar/SearchForNav";
 const NavBar = () => {
   return (
     <>
@@ -20,7 +21,7 @@ const NavBar = () => {
         <li>
           {" "}
           <a href>
-            <NavLink to="/validateForm">Validated Form</NavLink>
+            <NavLink to="/ValidateForm">Validated Form</NavLink>
           </a>
         </li>
         <li>
@@ -34,6 +35,10 @@ const NavBar = () => {
           <a href>
             <NavLink to="/ZoomInOut">Zoom In Out</NavLink>
           </a>
+        </li>
+        <li style={{ marginTop: "11px", marginLeft: "400px" }}>
+          {" "}
+          <SearchBar />
         </li>
       </ul>
     </>
