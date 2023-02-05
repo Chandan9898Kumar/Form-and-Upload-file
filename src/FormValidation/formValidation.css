@@ -1,0 +1,152 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.parentDiv {
+  border-radius: 5px;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  overflow: auto;
+}
+
+.form {
+  box-shadow: 8px 8px;
+  background-color: #15172b;
+  border-radius: 20px;
+  box-sizing: border-box;
+  height: 520px;
+  padding: 20px;
+  width: 380px;
+}
+
+.title {
+  color: #eee;
+  font-family: sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  margin-top: 20px;
+}
+
+.subtitle {
+  color: #eee;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.input-container {
+  height: 50px;
+  position: relative;
+  width: 100%;
+}
+
+.ic1 {
+  margin-top: 40px;
+}
+
+.ic2 {
+  margin-top: 30px;
+}
+
+/* Here we have used className myInput,so it will do there changes on  whatever input fields are having className myInput */
+input[type="text"].myInput {
+  background-color: #303245;
+  border-radius: 12px;
+  border: 0px;
+  box-sizing: border-box;
+  color: #eee;
+  font-size: 18px;
+  height: 100%;
+  outline: 0;
+  padding: 4px 20px 0;
+  width: 100%;
+}
+input[type="text"]:hover {
+  background-color: green;
+  color: white;
+  border-radius: 2px solid black;
+  transition-duration: 1s;
+}
+
+input[type="email"].myInput {
+  background-color: #303245;
+  border-radius: 12px;
+  border: 0px;
+  box-sizing: border-box;
+  color: #eee;
+  font-size: 18px;
+  height: 100%;
+  outline: 0;
+  padding: 4px 20px 0;
+  width: 100%;
+}
+input[type="email"]:hover {
+  background-color: green;
+  color: white;
+  border-radius: 2px solid black;
+  transition-duration: 1s;
+}
+
+input[type="password"].myInput {
+  background-color: #303245;
+  border-radius: 12px;
+  border: 0px;
+  box-sizing: border-box;
+  color: #eee;
+  font-size: 18px;
+  height: 100%;
+  outline: 0;
+  padding: 4px 20px 0;
+  width: 100%;
+}
+input[type="password"]:hover {
+  background-color: green;
+  color: white;
+  border-radius: 2px solid black;
+  transition-duration: 1s;
+}
+
+input[type="submit"].myInput {
+  background-color: #08d;
+  border-radius: 12px;
+  border: 0px;
+  box-sizing: border-box;
+  color: #eee;
+  font-size: 18px;
+  height: 100%;
+  outline: 0;
+  padding: 4px 20px 0;
+  width: 100%;
+  cursor: pointer;
+}
+input[type="submit"]:active {
+  background-color: #06b;
+}
+
+input[type="submit"]:hover {
+  background-color: green;
+  color: white;
+  border-radius: 2px solid black;
+  transition-duration: 1s;
+}
+
+@media all and (max-width: 800px) {
+  .parentDiv {
+    justify-content: space-around;
+  }
+}
+
+@media all and (max-width: 600px) {
+  .parentDiv {
+    flex-flow: column wrap;
+    padding: 0;
+  }
+}
