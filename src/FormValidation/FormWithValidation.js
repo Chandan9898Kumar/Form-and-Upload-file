@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, lazy, Suspense } from "react";
 import "./formValidation.css";
-import ModalExampleContentImage from './Modal'
+import SpinnerLoader from "./Loader";
+const ModalExampleContentImage = lazy(() => import("./Modal"));
 const data = {
   firstName: "",
   lastName: "",
@@ -8,9 +9,9 @@ const data = {
   password: "",
 };
 const FormValidation = () => {
-// Instead of using useState for all data,we took only one useState,and put object in it.
+  // Instead of using useState for all data,we took only one useState,and put object in it.
   const [formDetails, setFormDetails] = useState(data);
-  const [result,setResult]=useState(false)
+  const [result, setResult] = useState(false);
 
   const handleCHange = (e) => {
     // e.target.style.color='red'
@@ -20,17 +21,16 @@ const FormValidation = () => {
     });
   };
 
-
-const handleSubmit=(e)=>{
-    e.preventDefault()
-    setFormDetails(data)
-    setResult(true)
-}
-if(result){
-    setTimeout(()=>{
-        setResult(false)
-    },1000)
-}
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setFormDetails(data);
+    setResult(true);
+  };
+  if (result) {
+    setTimeout(() => {
+      setResult(false);
+    }, 1000);
+  }
 
   return (
     <div className="parentDiv">
@@ -115,14 +115,16 @@ if(result){
             type="submit"
             value="Submit"
             onClick={(e) => {
-              handleSubmit(e)
+              handleSubmit(e);
             }}
           />
         </div>
       </form>
-      {
-        result && <ModalExampleContentImage formDetails={formDetails} />
-      }
+      {result && (
+        <Suspense fallback={<SpinnerLoader />}>
+          <ModalExampleContentImage formDetails={formDetails} />
+        </Suspense>
+      )}
     </div>
   );
 };
