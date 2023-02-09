@@ -1,6 +1,7 @@
 import React, { useState, lazy, Suspense } from "react";
 import "./formValidation.css";
 import SpinnerLoader from "./Loader";
+import { Message } from "semantic-ui-react";
 const ModalExampleContentImage = lazy(() => import("./Modal"));
 const data = {
   firstName: "",
@@ -8,10 +9,12 @@ const data = {
   email: "",
   password: "",
 };
+
 const FormValidation = () => {
   // Instead of using useState for all data,we took only one useState,and put object in it.
   const [formDetails, setFormDetails] = useState(data);
   const [result, setResult] = useState(false);
+  const [valid, setValidation] = useState(false);
 
   const handleCHange = (e) => {
     // e.target.style.color='red'
@@ -23,21 +26,55 @@ const FormValidation = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFormDetails(data);
-    setResult(true);
+    let emailValid = emailValidation();
+    let passwordValid = PasswordValidation();
+    if (emailValid && passwordValid) {
+      setFormDetails(data);
+      setResult(true);
+    } else {
+      setValidation(true);
+    }
   };
+
   if (result) {
     setTimeout(() => {
       setResult(false);
     }, 1000);
   }
+  if (valid) {
+    setTimeout(() => {
+      setValidation(false);
+    }, 2000);
+  }
+  const emailValidation = () => {
+    const regex =
+      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    if (!formDetails.email || regex.test(formDetails.email) === false) {
+      return false;
+    }
+    return true;
+  };
+
+  const PasswordValidation = () => {
+    const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/;
+    if (!formDetails.password || regex.test(formDetails.password) === false) {
+      return false;
+    }
+    return true;
+  };
+
+  const MessageExampleMessage = () => (
+    <Message>
+      <Message.Header>Validation Error</Message.Header>
+      <p>Please check Your Email or Password...</p>
+    </Message>
+  );
 
   return (
     <div className="parentDiv">
-      <form className="form">
+      <form className="form" onSubmit={handleSubmit}>
         <div className="title">Welcome</div>
         <div className="subtitle">Let's create your account!</div>
-
         <div className="input-container ic1">
           <input
             required={true}
@@ -114,9 +151,9 @@ const FormValidation = () => {
             className="myInput"
             type="submit"
             value="Submit"
-            onClick={(e) => {
-              handleSubmit(e);
-            }}
+            // onClick={(e) => {
+            //   handleSubmit(e);
+            // }}
           />
         </div>
       </form>
@@ -125,6 +162,7 @@ const FormValidation = () => {
           <ModalExampleContentImage formDetails={formDetails} />
         </Suspense>
       )}
+      {valid && <MessageExampleMessage />}
     </div>
   );
 };
