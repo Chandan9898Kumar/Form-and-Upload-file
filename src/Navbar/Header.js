@@ -36,10 +36,16 @@ const NavBar = () => {
             <NavLink to="/ZoomInOut">Zoom In Out</NavLink>
           </a>
         </li>
-        <li style={{ marginTop: "11px", marginLeft: "400px" }}>
+        <li>
+          {" "}
+          <a href>
+            <NavLink to="/ImageSearch">Search Image</NavLink>
+          </a>
+        </li>
+        {/* <li style={{ marginTop: "0px", marginLeft: "800px" }}>
           {" "}
           <SearchBar />
-        </li>
+        </li> */}
       </ul>
     </>
   );

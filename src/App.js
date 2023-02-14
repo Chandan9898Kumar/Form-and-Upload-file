@@ -9,8 +9,11 @@ const FormBootstrapExample = lazy(() =>
 );
 const UploadFile = lazy(() => import("./FileUpload/FileUpload"));
 const HomePage = lazy(() => import("./HomePage/Home"));
-const ResizeImage=lazy(()=>import('./ZoomInZoomOut/ZoomInOut'));
-const FormValidation=lazy(()=>import('./FormValidation/FormWithValidation'))
+const ResizeImage = lazy(() => import("./ZoomInZoomOut/ZoomInOut"));
+const FormValidation = lazy(() =>
+  import("./FormValidation/FormWithValidation")
+);
+const ImageSearchApp = lazy(() => import("./SearchImage/ImageSearch"));
 function App() {
   return (
     <div className="">
@@ -28,6 +31,7 @@ function App() {
             <Route exact path="/" element={<HomePage />} />
             <Route exact path="/ZoomInOut" element={<ResizeImage />} />
             <Route exact path="/ValidateForm" element={<FormValidation />} />
+            <Route exact path="/ImageSearch" element={<ImageSearchApp />} />
           </Routes>
         </BrowserRouter>
       </Suspense>
