@@ -1,0 +1,56 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+
+.setSearchAtCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+input[type="search"] {
+  box-sizing: border-box;
+  width: 30%;
+  height: 35px;
+  border-radius: 120px;
+  font-size: 18px;
+  background-color: #303245;
+  color: white;
+  outline: 0;
+  border: 0px;
+  padding: 4px 20px 0;
+}
+
+.imageFix {
+  box-sizing: border-box;
+  display: flex;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  justify-content:center;
+  padding: 0 4px;
+}
+
+
+div.setMargin{
+    padding-left: 200px;
+    margin: 0;
+}
+
+div.settingImage {
+  display: inline-block;
+  padding: 5px;
+  border: 0px solid crimson;
+  border-radius: 5px;
+  margin-left: 0;
+  margin-right: 0;
+
+}
+
+img {
+  width: 500px;
+  height: 250px;
+}

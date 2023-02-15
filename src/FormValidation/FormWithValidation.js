@@ -20,7 +20,7 @@ const FormValidation = () => {
     // e.target.style.color='red'
     setFormDetails({
       ...formDetails,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value.trim(),
     });
   };
 
