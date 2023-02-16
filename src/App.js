@@ -14,6 +14,10 @@ const FormValidation = lazy(() =>
   import("./FormValidation/FormWithValidation")
 );
 const ImageSearchApp = lazy(() => import("./SearchImage/ImageSearch"));
+
+const ImageWithClass = lazy(() =>
+  import("./ImageSearchWihClass/GetDataFromApi")
+);
 function App() {
   return (
     <div className="">
@@ -32,6 +36,11 @@ function App() {
             <Route exact path="/ZoomInOut" element={<ResizeImage />} />
             <Route exact path="/ValidateForm" element={<FormValidation />} />
             <Route exact path="/ImageSearch" element={<ImageSearchApp />} />
+            <Route
+              exact
+              path="/ImageSearchWithClass"
+              element={<ImageWithClass />}
+            />
           </Routes>
         </BrowserRouter>
       </Suspense>

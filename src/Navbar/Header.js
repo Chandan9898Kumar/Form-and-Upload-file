@@ -42,6 +42,13 @@ const NavBar = () => {
             <NavLink to="/ImageSearch">Search Image</NavLink>
           </a>
         </li>
+        <li>
+          {" "}
+          <a href>
+            <NavLink to="/ImageSearchWithClass">Search Image Class</NavLink>
+          </a>
+        </li>
+
         {/* <li style={{ marginTop: "0px", marginLeft: "800px" }}>
           {" "}
           <SearchBar />
